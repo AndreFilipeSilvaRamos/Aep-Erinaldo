@@ -1,0 +1,38 @@
+algoritmo "Criptografia_1"
+// Disciplina   : [Linguagem e Lógica de Programação]
+// Professor   : ERINALDO SANCHES NASCIMENTO
+Var
+   c, s, senha, descprit, cript: caracter
+   x, i: inteiro
+Inicio
+   Escreva("Informe uma palavra: ")        // Solicita ao usuário que insira uma palavra
+   Leia(s)                                 // Lê a palavra informada pelo usuário
+   senha := ""                             // Inicializa a senha como string vazia
+
+   // Início do processo de criptografia
+   para x de 1 ate COMPR(s) faca
+      c := COPIA(s, x, 1)                  // Copia o caracter na posição x
+      i := ASC(c) + x + 5                 // Calcula o novo código ASCII
+      c := CARAC(i)                         // Converte o código ASCII de volta para caracter
+      senha := senha + c                   // Adiciona o caracter criptografado à "senha"
+   fimpara
+   cript := senha                          // Armazena a senha criptografada
+
+   senha := ""
+   // Início do processo de descriptografia
+   para x de 1 ate COMPR(cript) faca       /
+      c := COPIA(cript, x, 1)              // Copia o caracter na posição x da senha criptografada
+      i := ASC(c) - x - 5                 // Calcula o código ASCII original
+      c := CARAC(i)                         // Converte o código ASCII de volta para caracter
+      senha := senha + c                   // Adiciona o caracter descriptografado à 'senha'
+   fimpara
+   descprit := senha                       // Armazena a senha descriptografada
+
+   Limpatela()                             // Limpa a tela para apresentação dos resultados
+   escreval("------------------------")
+   escreval("-----CRIPTOGRAFANDO----")
+   escreval("------------------------")
+   escreval("Sua senha inicial = ", s)    // Exibe a palavra original
+   escreval("Sua senha criptografada = ", cript)  // Exibe a senha criptografada
+   escreval("Sua senha descriptografada = ", descprit ) // Exibe a senha descriptografada
+fimalgoritmo
